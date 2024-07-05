@@ -11,6 +11,7 @@ import { loading } from "./animation";
 import { useDispatch } from "react-redux";
 import { useGetMovieQuery } from '@/store/MovieApi';
 import { fetchFailure, fetchStart, fetchSuccess } from "./store/NewAuth";
+import MovieDetailsPage from "./page/MovieDetailsPage";
 
 const Home = lazy(() => import("./page/Home"));
 const HomeSections = lazy(() => import("./page/HomeSection"));
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         element: (
           <Suspense
             fallback={
-              <div className="fixed  z-50 top-0 right-0 bottom-0 left-0 w-full h-full flex justify-center items-center">
+              <div className="fixed bg-gray-200  min-h-screen z-50 top-0 right-0 bottom-0 left-0 w-full h-full flex justify-center items-center">
                 <Lottie
                   style={{ width: "14rem", height: "16rem" }}
                   animationData={loading}
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         element: (
           <Suspense
             fallback={
-              <div className="fixed  z-50 top-0 right-0 bottom-0 left-0 w-full h-full flex justify-center items-center">
+              <div className="fixed  bg-gray-200  z-50 top-0 min-h-screen right-0 bottom-0 left-0 w-full h-full flex justify-center items-center">
                 <Lottie
                   style={{ width: "14rem", height: "16rem" }}
                   animationData={loading}
@@ -57,6 +58,27 @@ const router = createBrowserRouter([
             }
           >
             <HomeSections />
+          </Suspense>
+        ),
+  
+  },
+      {
+  
+        path: "/MovieDetails/:id",
+        index: true,
+        element: (
+          <Suspense
+            fallback={
+              <div className="fixed bg-gray-200  z-50 top-0 right-0 bottom-0 left-0 w-full h-full min-h-screen flex justify-center items-center">
+                <Lottie
+                  style={{ width: "14rem", height: "16rem" }}
+                  animationData={loading}
+                  loop={true}
+                />
+              </div>
+            }
+          >
+            <MovieDetailsPage />
           </Suspense>
         ),
   

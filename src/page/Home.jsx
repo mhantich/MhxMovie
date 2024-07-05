@@ -1,6 +1,5 @@
 import About from "@/components/About";
 import Banner from "@/components/Banner";
-import Footer from "@/components/Footer";
 import NewRelease from "@/components/NewRealsed";
 import OverView from "@/components/OverView";
 import Slide from "@/components/Slide";
@@ -35,9 +34,7 @@ function Home() {
       <AnimatedSection>
         <OverView />
       </AnimatedSection>
-      <AnimatedSection>
-        <Footer />
-      </AnimatedSection>
+
     </div>
   );
 }

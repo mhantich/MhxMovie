@@ -1,11 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import { Button } from "./components/ui/button";
+import Footer from "./components/Footer";
 
 
 function AppLayout() {
   return (
     <>
-          <header className="bg-black text-white p-4">
+          <header className=" w-full bg-black py-3 z-50 fixed top-0 mb-3 text-white ">
         <nav className="container mx-auto flex items-center justify-between">
           <div className="text-2xl font-bold">MhxMovie</div>
           <ul className="hidden md:flex space-x-6">
@@ -29,6 +30,7 @@ function AppLayout() {
       </header>
   
       <Outlet />
+      <Footer />
     </>
   );
 }

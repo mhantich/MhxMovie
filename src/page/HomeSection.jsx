@@ -9,14 +9,16 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
-import Footer from "@/components/Footer";
+
+import { useNavigate } from "react-router-dom";
+
 
 const AnimatedSection = ({ children }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.1 }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 1, delay: 0.5 }}
     >
       {children}
@@ -30,9 +32,10 @@ const HomeSection = () => {
       const settings = {
     dots: false,
     infinite: true,
-    speed: 4500,
+    speed:500,
     slidesToShow: 4,
     autoplay: true,
+    autoplaySpeed: 18500,
     slidesToScroll: 1,
     afterChange: (current) => setActiveSlide(current),
     beforeChange: (current, next) => setActiveSlide(next), // Ensure the state is updated before the slide change
@@ -41,7 +44,7 @@ const HomeSection = () => {
 
   const { data: movieSections } = useGetMovieRoadQuery();
   const { data: movieUpCOMING } = useGetMovieUpComingQuery();
-
+const navigatev  =useNavigate()
   return (
     <>
       <div className="flex overflow-x-hidden  bg-black text-gray-800">
@@ -54,7 +57,7 @@ const HomeSection = () => {
               style={{
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url(https://image.tmdb.org/t/p/w500${movieUpCOMING?.results[activeSlide]?.backdrop_path})`,
+                backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url(https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${movieUpCOMING?.results[activeSlide]?.backdrop_path})`,
               }}
               className=" min-h-screen w-full flex flex-col md:flex-row items-center "
             >
@@ -83,6 +86,7 @@ const HomeSection = () => {
                         <p className="text-gray-100 mb-4  text-sm">
                           {movieUpCOMING?.results[activeSlide].overview}
                         </p>
+                     
                         <p className="mb-4">
                           Rating: 8/10
                         </p>
@@ -104,6 +108,7 @@ const HomeSection = () => {
                 {movieUpCOMING?.results?.map((item, index) => (
                   <div key={index} >
                     <img
+                    onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt={item.original_title}
                       style={{}}
@@ -124,6 +129,8 @@ const HomeSection = () => {
                 {movieSections?.results?.map((item, index) => (
                   <div key={index}>
                     <img
+                                        onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
+
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt={item.original_title}
                       style={{}}
@@ -142,6 +149,8 @@ const HomeSection = () => {
               {data?.results?.map((item, index) => (
                 <div key={index}>
                   <img
+                                      onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
+
                     src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                     alt={item.original_title}
                     style={{}}
@@ -158,7 +167,7 @@ const HomeSection = () => {
           </button>
         </main>
       </div>
-      <Footer />
+   
     </>
   );
 };
