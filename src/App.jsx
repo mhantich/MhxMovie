@@ -12,9 +12,13 @@ import { useDispatch } from "react-redux";
 import { useGetMovieQuery } from '@/store/MovieApi';
 import { fetchFailure, fetchStart, fetchSuccess } from "./store/NewAuth";
 import MovieDetailsPage from "./page/MovieDetailsPage";
+import SideBar from "./components/SideBar";
+import Error from "./page/Error";
 
 const Home = lazy(() => import("./page/Home"));
 const HomeSections = lazy(() => import("./page/HomeSection"));
+const Tvs = lazy(() => import("./page/Tv"));
+const Tranding = lazy(() => import("./page/Tranding"));
 
 
 const router = createBrowserRouter([
@@ -83,8 +87,54 @@ const router = createBrowserRouter([
         ),
   
   },
+      {
+  
+        path: "/Tv",
+        index: true,
+        element: (
+          <Suspense
+            fallback={
+              <div className="fixed bg-gray-200  z-50 top-0 right-0 bottom-0 left-0 w-full h-full min-h-screen flex justify-center items-center">
+                <Lottie
+                  style={{ width: "14rem", height: "16rem" }}
+                  animationData={loading}
+                  loop={true}
+                />
+              </div>
+            }
+          >
+            <Tvs />
+          </Suspense>
+        ),
+  
+  },
+      {
+  
+        path: "/Tranding",
+        index: true,
+        element: (
+          <Suspense
+            fallback={
+              <div className="fixed bg-gray-200  z-50 top-0 right-0 bottom-0 left-0 w-full h-full min-h-screen flex justify-center items-center">
+                <Lottie
+                  style={{ width: "14rem", height: "16rem" }}
+                  animationData={loading}
+                  loop={true}
+                />
+              </div>
+            }
+          >
+            <Tranding />
+          </Suspense>
+        ),
+  
+  },
     ],
   },
+  {
+    path:'/*',
+    element:<Error/>
+  }
 ]);
 
 function App() {
@@ -109,6 +159,7 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-100">
       <Toaster />
+      <SideBar/>
       <RouterProvider router={router} />
     </div>
   );

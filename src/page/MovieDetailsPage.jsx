@@ -32,21 +32,21 @@ const MovieDetailsPage = () => {
   }, [id]);
 
   const { data, isLoading } = useGetMovieDetailsQuery(id);
-  const { data: revMovie, isLoading: revLoading } =
-    useGetMovieDetailsRevQuery(id);
-  console.log(revMovie);
-  if (isLoading || revLoading) {
-    return (
-      <div className="w-full min-h-screen flex justify-center items-center">
-        {" "}
-        <Lottie
-          style={{ width: "Irem", height: "16rem" }}
-          animationData={loading}
-          loop={false}
-        />
-      </div>
-    );
-  }
+
+ 
+
+    if (isLoading ) {
+      return (
+        <div className="w-full bg-white fixed top-0 bottom-0 right-0 left-0 z-50 min-h-screen flex justify-center items-center">
+          {" "}
+          <Lottie
+            style={{ width: "Irem", height: "16rem" }}
+            animationData={loading}
+            loop={true}
+          />
+        </div>
+      );
+    }
 
   const reviw = [
     "Seattle Times",
@@ -171,7 +171,7 @@ const MovieDetailsPage = () => {
           <div className="flex items-center justify-start gap-3 overflow-x-auto">
             {data?.credits?.cast.map((name, index) => (
               <div key={index} className="text-center ">
-                <Avatar className="w-36 h-36 mx-auto mb-2">
+                <Avatar className="md:w-36 w-full h-36 mx-auto mb-2">
                   <AvatarFallback>{name.name}</AvatarFallback>
                   <AvatarImage
                     src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${name.profile_path}`}
@@ -187,7 +187,7 @@ const MovieDetailsPage = () => {
 
 </AnimatedSection>
         <AnimatedSection>
-        <h3 className="text-xl font-bold mt-8 mb-4">Reviews</h3>
+        <h3 className="text-xl font-bold mt-8 mb-4 ">Reviews</h3>
         <div className="w-full flex items-center gap-2 overflow-x-auto container">
           {reviw.map((source, index) => (
             <div
@@ -208,7 +208,7 @@ const MovieDetailsPage = () => {
 
 
         <AnimatedSection>
-        <div className="flex container overflow-x-auto gap-5">
+        <div className="flex container overflow-x-auto gap-5 mt-9">
           {data?.videos?.results?.map((item, index) => (
             <iframe
               key={index}
@@ -219,7 +219,7 @@ const MovieDetailsPage = () => {
               allowFullScreen
             ></iframe>
           ))}
-        </div>
+        </div> 
 
 </AnimatedSection>
       </main>

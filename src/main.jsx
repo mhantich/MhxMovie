@@ -8,6 +8,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import { Provider } from "react-redux";
 
 import  NewAuth from './store/NewAuth.js';
+import globalReducer from "./store/index.js";
 
 import { MovieApi } from './store/MovieApi.js';
 
@@ -16,6 +17,7 @@ const store = configureStore({
   reducer: {
 
      NewAuth,
+     globalReducer,
 
 
     [MovieApi.reducerPath]: MovieApi.reducer,

@@ -1,18 +1,19 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {
-  useGetMovieRoadQuery,
-  useGetMovieUpComingQuery,
+
+    useGetTradingDayQuery,
+  useGetTradingQuery,
+ 
 } from "@/store/MovieApi";
 import { motion } from "framer-motion";
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import Slider from "react-slick";
 
 import { useNavigate } from "react-router-dom";
-import { loading } from "@/animation";
 import Lottie from "lottie-react";
+import { loading } from "@/animation";
 
 
 const AnimatedSection = ({ children }) => {
@@ -28,9 +29,9 @@ const AnimatedSection = ({ children }) => {
   );
 };
 
-const HomeSection = () => {
+const Tranding = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const navigatev=useNavigate()
+
   var settings = {
     dots: false,
     infinite: true,
@@ -68,16 +69,11 @@ const HomeSection = () => {
     ]
   };
 
+
+  const { data: movieUpCOMING ,isLoading} = useGetTradingQuery();
+  const { data: movieUpCOMINGDAY,isLoading:laod } = useGetTradingDayQuery();
   
-  const { data } = useSelector((state) => state.NewAuth);
-
-  const { data: movieSections,isLoading } = useGetMovieRoadQuery();
-  const { data: movieUpCOMING } = useGetMovieUpComingQuery();
-
-
-
-
-  if (isLoading ) {
+  if (isLoading,laod ) {
     return (
       <div className="w-full bg-white fixed top-0 bottom-0 right-0 left-0 z-50 min-h-screen flex justify-center items-center">
         {" "}
@@ -89,7 +85,6 @@ const HomeSection = () => {
       </div>
     );
   }
-
 
   return (
     <>
@@ -146,21 +141,32 @@ const HomeSection = () => {
            
                  </div>
             </div>
-
-
-
-            <div>
-
-            </div>
           </AnimatedSection>
 
   
-            <div className="container mt-5 ">
+            <div className="container my-9 ">
+                <h1 className="text-3xl capitalize font-bold mb-3"> trending this week</h1>
               <Slider {...settings}>
                 {movieUpCOMING?.results?.map((item, index) => (
                   <div key={index} >
                     <img
-                    onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
+                    // onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.original_title}
+                      style={{}}
+                      className=""
+                    />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+            <div className="container my-9 ">
+                <h1 className="text-3xl capitalize font-bold mb-3">trending today</h1>
+              <Slider {...settings}>
+                {movieUpCOMINGDAY?.results?.map((item, index) => (
+                  <div key={index} >
+                    <img
+                    // onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt={item.original_title}
                       style={{}}
@@ -172,47 +178,9 @@ const HomeSection = () => {
             </div>
        
 
-          <AnimatedSection>
 
 
 
-            <div className="container mb-5 ">
-              <Slider {...settings}>
-                {movieSections?.results?.map((item, index) => (
-                  <div key={index}>
-                    <img
-                                        onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
-
-                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                      alt={item.original_title}
-                      style={{}}
-                      className=""
-                    />
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection>
-
-          <div className="container mb-5  ">
-            <Slider {...settings}>
-              {data?.results?.map((item, index) => (
-                <div key={index}>
-                  <img
-                                      onClick={()=>{navigatev(`/MovieDetails/${item.id}`)}}
-
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt={item.original_title}
-                    style={{}}
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-
-          </AnimatedSection>
 
           <button className="w-full  text-gray-800 py-2 rounded mt-8">
             Load more
@@ -224,4 +192,4 @@ const HomeSection = () => {
   );
 };
 
-export default HomeSection;
+export default Tranding;
