@@ -58,22 +58,22 @@ const MovieDetailsPage = () => {
     "Premiere Magazine",
   ];
   return (
-    <div className="bg-black text-white mt-14 ">
+    <div className="bg-black text-white ">
       <main className=" mx-auto px-1 py-1">
         <div
           style={{
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
-            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url( https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data?.backdrop_path})`,
+            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.2)), url( https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${data?.backdrop_path})`,
           }}
           className="md:col-span-2"
         >
           <AnimatedSection>
-          <div className="  min-h-screen h-dvh  flex items-center justify-center container">
+          <div className="  min-h-screen py-9  flex items-center justify-center container">
             <CardContent className="p-6">
               <div className="flex items-start flex-col  space-x-4 md:flex-row">
-                <div className="md:w-1/3">
-                  <div className="aspect-w-2 aspect-h-3  rounded-lg">
+                <div className=" md:w-1/3">
+                  <div className="aspect-w-2 aspect-h-3 container  rounded-lg">
                     <img
                       src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`}
                       alt=""
@@ -122,8 +122,8 @@ const MovieDetailsPage = () => {
                     <Button>
                       <PlayCircle className="mr-2 h-4 w-4" /> Watch Now
                     </Button>
-                    <Button variant="outline">
-                      <Share2 className="mr-2 h-4 w-4" /> Share
+                    <Button variant="outline text-black bg-white">
+                      <Share2 className="mr-2 h-4 w-4 " /> Share
                     </Button>
                   </div>
                 </div>
@@ -134,26 +134,20 @@ const MovieDetailsPage = () => {
 </AnimatedSection>
         </div>
         <AnimatedSection>
-        <div className="mt-8">
+        <div className="mt-8 container">
           <h3 className="text-xl font-bold mb-4">
             Watch {data?.original_title}
           </h3>
-          <div className="flex ">
-            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
+          <div className="w-full flex items-center gap-2 overflow-x-auto ">
+            <div className="aspect-w-16  md: aspect-h-9  w-full md:w-1/3 flex-none px-2 py-4">
               <img
                 className="h-full "
                 src={`https://image.tmdb.org/t/p/w500/${data?.backdrop_path}`}
                 alt=""
               />
             </div>
-            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
-              <img
-                className="h-full w-full object-cover"
-                src={`https://image.tmdb.org/t/p/w500/${data?.belongs_to_collection?.poster_path}`}
-                alt=""
-              />
-            </div>
-            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
+   
+            <div className="aspect-w-16  md: aspect-h-9  w-full md:w-1/3 flex-none px-2 py-4">
               <img
                 className="h-full"
                 src={`https://image.tmdb.org/t/p/w500/${data?.belongs_to_collection?.backdrop_path}`}
@@ -166,10 +160,10 @@ const MovieDetailsPage = () => {
 </AnimatedSection>
 
         <AnimatedSection>
-        <div>
+        <div className="container">
           <h3 className="text-xl font-bold mb-4">Cast & Crew</h3>
-          <div className="flex items-center justify-start gap-3 overflow-x-auto">
-            {data?.credits?.cast.map((name, index) => (
+          <div className="w-full flex items-center gap-2 overflow-x-auto ">
+          {data?.credits?.cast.map((name, index) => (
               <div key={index} className="text-center ">
                 <Avatar className=" w-36  h-36 mx-auto mb-2">
                   <AvatarFallback>{name.name}</AvatarFallback>
@@ -186,7 +180,11 @@ const MovieDetailsPage = () => {
         </div>
 
 </AnimatedSection>
-        <AnimatedSection>
+        <AnimatedSection >
+
+          <div className="container" >
+
+          
         <h3 className="text-xl font-bold mt-8 mb-4 ">Reviews</h3>
         <div className="w-full flex items-center gap-2 overflow-x-auto container">
           {reviw.map((source, index) => (
@@ -203,11 +201,14 @@ const MovieDetailsPage = () => {
             </div>
           ))}
         </div>
-
+        </div>
 </AnimatedSection>
 
 
         <AnimatedSection>
+          <div className="container">
+
+        
         <div className="flex container overflow-x-auto gap-5 mt-9">
           {data?.videos?.results?.map((item, index) => (
             
@@ -221,8 +222,9 @@ const MovieDetailsPage = () => {
             ></iframe>
           ))}
         </div> 
-
+        </div>
 </AnimatedSection>
+
       </main>
     </div>
   );

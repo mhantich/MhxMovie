@@ -13,6 +13,9 @@ import Slider from "react-slick";
 import { useNavigate } from "react-router-dom";
 import { loading } from "@/animation";
 import Lottie from "lottie-react";
+import { CardContent } from "@/components/ui/card";
+import { PlayCircle, Share2, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const AnimatedSection = ({ children }) => {
   return (
@@ -101,39 +104,50 @@ const HomeSection = () => {
               }}
               className=" min-h-screen w-full flex flex-col md:flex-row items-center "
             >
-              <div className="mb-8 bg-transparent gap-7 justify-center  flex-col md:flex-row flex py-20 h-dvh min-h-screen  container ">
-                <div className="py-5  h-[32rem] md:w-[32rem] overflow-hidden">
-                  <img
+             <div className="  min-h-screen h-dvh py-9 mt-14 flex items-center justify-center container">
+<CardContent className="p-6">
+  <div className="flex items-start flex-col  space-x-4 md:flex-row">
+    <div className=" md:w-1/3">
+      <div className="aspect-w-2 aspect-h-3 container  rounded-lg">
+        <img
                     src={`https://image.tmdb.org/t/p/w500${movieUpCOMING?.results[activeSlide].poster_path}`}
-                    className=" object-cover rounded-lg w-full shadow-lg h-full"
-                    style={{ pointerEvents: "none" }}
-                  />
-                </div>
-                <div className=" items-start flex md:items-center md:w-1/2 px-5">
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div>
-                      <h2 className="text-2xl font-bold mb-2">
-                        {movieUpCOMING?.results[activeSlide].original_title}
-                      </h2>
-                      <p className="text-gray-100 mb-4">
-                        {movieUpCOMING?.results[activeSlide].release_date} • 2h
-                        • Romatic
-                      </p>
-                      <p className="text-gray-100 mb-4  text-sm">
-                        {movieUpCOMING?.results[activeSlide].overview}
-                      </p>
+                    alt=""
+        />
+      </div>
+    </div>
+    <div className="w-full">
+      <h2 className="text-2xl font-bold mb-2">
+        {" "}
+        {movieUpCOMING?.results[activeSlide].original_title}
+      </h2>
+      <div className="flex items-center space-x-2 mb-4">
+        <span>{movieUpCOMING?.results[activeSlide].release_date}</span>
+        <span>•</span>
+        <span>R</span>
+        <span>•</span>
+        <span>{movieUpCOMING?.results[activeSlide].runtime}Min</span>
+      </div>
 
-                      <p className="mb-4">Rating: 8/10</p>
-                      <button className="bg-red-500 text-white px-4 py-2 rounded">
-                        Watch Now - Free
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+      <div className="flex items-center space-x-2 mb-4">
+        <Star className="text-yellow-400" />
+        <span className="font-bold">4.5</span>
+      </div>
+      <p className="text-gray-400 mb-4 text-sm">{movieUpCOMING?.results[activeSlide].overview}</p>
+      <div className="flex space-x-2">
+        <Button>
+          <PlayCircle className="mr-2 h-4 w-4" /> Watch Now
+        </Button>
+        <Button variant="outline text-black bg-white">
+          <Share2 className="mr-2 h-4 w-4 " /> Share
+        </Button>
+      </div>
+    </div>
+  </div>
+</CardContent>
+</div>
             </div>
 
-            <div></div>
           </AnimatedSection>
 
           <div className="container mt-5 ">
@@ -203,3 +217,4 @@ const HomeSection = () => {
 };
 
 export default HomeSection;
+

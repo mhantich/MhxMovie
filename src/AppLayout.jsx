@@ -11,10 +11,10 @@ function AppLayout() {
   const dispatch = useDispatch()
 
 
-  const menu = [{name:'Movies',link:'/'},{name:'openFix',link:'/OpenFlix'},{name:'Tv',link:'/Tv'},{name:'Tranding',link:'/Tranding'}]
+  const menu = [{name:'Movies',link:'/'},{name:'openFix',link:'/openFix'},{name:'Tv',link:'/Tv'},{name:'Tranding',link:'/Tranding'}]
   return (
     <>
-          <header className=" w-full bg-black py-3 z-50 fixed top-0 mb-3 text-white ">
+          <header className=" w-full bg-black py-3 text-white ">
         <nav className="container mx-auto flex items-center justify-between">
           <div className="text-2xl font-bold">MhxMovie</div>
           <ul className="hidden md:flex space-x-6">
