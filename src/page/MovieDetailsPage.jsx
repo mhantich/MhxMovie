@@ -69,7 +69,7 @@ const MovieDetailsPage = () => {
           className="md:col-span-2"
         >
           <AnimatedSection>
-          <div className="  h-dvh max-h-screen overflow-y-hidden flex items-center justify-center container">
+          <div className="  min-h-screen h-dvh  flex items-center justify-center container">
             <CardContent className="p-6">
               <div className="flex items-start flex-col  space-x-4 md:flex-row">
                 <div className="md:w-1/3">
@@ -138,22 +138,22 @@ const MovieDetailsPage = () => {
           <h3 className="text-xl font-bold mb-4">
             Watch {data?.original_title}
           </h3>
-          <div className="grid grid-cols-4 gap-4">
-            <div className="aspect-w-16 aspect-h-9 bg-gray-700 rounded-lg max-h-60">
+          <div className="flex ">
+            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
               <img
                 className="h-full "
                 src={`https://image.tmdb.org/t/p/w500/${data?.backdrop_path}`}
                 alt=""
               />
             </div>
-            <div className="aspect-w-16 aspect-h-9 bg-gray-700 rounded-lg max-h-60">
+            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
               <img
                 className="h-full w-full object-cover"
                 src={`https://image.tmdb.org/t/p/w500/${data?.belongs_to_collection?.poster_path}`}
                 alt=""
               />
             </div>
-            <div className="aspect-w-16 aspect-h-9 bg-gray-700 rounded-lg max-h-60">
+            <div className="aspect-w-16  md: aspect-h-9 bg-gray-900 w-full md:w-1/3 flex-none px-2 py-4">
               <img
                 className="h-full"
                 src={`https://image.tmdb.org/t/p/w500/${data?.belongs_to_collection?.backdrop_path}`}
@@ -171,7 +171,7 @@ const MovieDetailsPage = () => {
           <div className="flex items-center justify-start gap-3 overflow-x-auto">
             {data?.credits?.cast.map((name, index) => (
               <div key={index} className="text-center ">
-                <Avatar className="w-36  h-36 mx-auto mb-2">
+                <Avatar className=" w-36  h-36 mx-auto mb-2">
                   <AvatarFallback>{name.name}</AvatarFallback>
                   <AvatarImage
                     src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${name.profile_path}`}
@@ -210,6 +210,7 @@ const MovieDetailsPage = () => {
         <AnimatedSection>
         <div className="flex container overflow-x-auto gap-5 mt-9">
           {data?.videos?.results?.map((item, index) => (
+            
             <iframe
               key={index}
               width="540"

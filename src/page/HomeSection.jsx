@@ -101,7 +101,7 @@ const HomeSection = () => {
               }}
               className=" min-h-screen w-full flex flex-col md:flex-row items-center "
             >
-              <div className="mb-8 bg-transparent gap-7 justify-center  flex-col md:flex-row flex py-20 h-dvh max-h-screen overflow-y-hidden container ">
+              <div className="mb-8 bg-transparent gap-7 justify-center  flex-col md:flex-row flex py-20 h-dvh min-h-screen  container ">
                 <div className="py-5  h-[32rem] md:w-[32rem] overflow-hidden">
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movieUpCOMING?.results[activeSlide].poster_path}`}
