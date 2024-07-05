@@ -4,10 +4,12 @@ import Footer from "./components/Footer";
 import { Menu } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { setshowSideBar } from "./store";
+import SideBar from "./components/SideBar";
 
 
 function AppLayout() {
   const dispatch = useDispatch()
+
 
   const menu = [{name:'Movies',link:'/'},{name:'openFix',link:'/OpenFlix'},{name:'Tv',link:'/Tv'},{name:'Tranding',link:'/Tranding'}]
   return (
@@ -17,7 +19,7 @@ function AppLayout() {
           <div className="text-2xl font-bold">MhxMovie</div>
           <ul className="hidden md:flex space-x-6">
             {menu.map((item,index)=>(
-            <li key={index}><Link to={item.link} className="hover:text-gray-300"> {item.name} </Link></li>
+            <li key={index}><Link to={item.link}  className="hover:text-gray-300"> {item.name} </Link></li>
 
             ))}
   
@@ -38,6 +40,7 @@ function AppLayout() {
           </div>
         </nav>
       </header>
+      <SideBar/>
   
       <Outlet />
       <Footer />
