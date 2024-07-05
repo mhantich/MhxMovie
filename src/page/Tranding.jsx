@@ -100,9 +100,9 @@ const Tranding = () => {
                 backgroundSize: "cover",
                 backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.55)), url(https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/${movieUpCOMING?.results[activeSlide]?.backdrop_path})`,
               }}
-              className=" min-h-screen w-full flex flex-col md:flex-row items-center "
+              className="  h-dvh max-h-screen overflow-y-hidden w-full flex flex-col md:flex-row items-center "
             >
-              <div className="mb-8 bg-transparent gap-7   flex-col md:flex-row flex py-20 min-h-screen container ">
+              <div className="mb-8 bg-transparent gap-7 items-center  flex-col md:flex-row flex py-20 min-h-screen container ">
              
                   <div className="py-5  h-[32rem] md:w-[32rem] overflow-hidden">
                     <img

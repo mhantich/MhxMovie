@@ -69,7 +69,7 @@ const MovieDetailsPage = () => {
           className="md:col-span-2"
         >
           <AnimatedSection>
-          <div className=" min-h-dvh flex items-center justify-center container">
+          <div className="  h-dvh max-h-screen overflow-y-hidden flex items-center justify-center container">
             <CardContent className="p-6">
               <div className="flex items-start flex-col  space-x-4 md:flex-row">
                 <div className="md:w-1/3">
@@ -171,7 +171,7 @@ const MovieDetailsPage = () => {
           <div className="flex items-center justify-start gap-3 overflow-x-auto">
             {data?.credits?.cast.map((name, index) => (
               <div key={index} className="text-center ">
-                <Avatar className="md:w-36 w-full h-36 mx-auto mb-2">
+                <Avatar className="w-36  h-36 mx-auto mb-2">
                   <AvatarFallback>{name.name}</AvatarFallback>
                   <AvatarImage
                     src={`https://media.themoviedb.org/t/p/w138_and_h175_face/${name.profile_path}`}

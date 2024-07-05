@@ -7,7 +7,8 @@ function SideBar() {
     { name: 'Movies', link: '/' },
     { name: 'OpenFlix', link: '/openFix' },
     { name: 'Tv', link: '/Tv' },
-    { name: 'Trending', link: '/Trending' }
+    { name: 'Trending', link: '/Tranding' }
+    
   ];
 
   const showbar = useSelector((state) => state.globalReducer.showSideBar);
